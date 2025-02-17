@@ -13,7 +13,8 @@
 ActiveRecord::Schema[8.0].define(version: 2025_02_14_215406) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
@@ -22,7 +23,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_215406) do
   create_table "expenses", force: :cascade do |t|
     t.integer "user_id", null: false
     t.decimal "amount", precision: 15, scale: 2, null: false
-    t.string "transaction_type", limit: 10, null: false
+    t.integer "transaction_type", null: false
     t.integer "category_id"
     t.text "description"
     t.date "date", null: false

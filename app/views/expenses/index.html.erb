@@ -1,0 +1,52 @@
+<header class="bg-white shadow-sm mb-4">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Expenses</h1>
+    </div>
+</header>
+<div class="w-full px-10">
+    <% if notice.present? %>
+        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+  
+    <div id="expenses" class="min-w-full">
+        <% if @expenses.any? %>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Amount
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Type
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Category
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Summary
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @expenses.each do |expense| %>
+                        <%= render expense %>
+                        <% end %>
+                        <td colspan="6">
+                            <%= link_to "New expense", new_user_expense_path, class: "px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+                        </td>
+                    </tbody>
+                </table>
+            </div>
+        <% else %>
+            <p class="text-center my-10">No expenses found.</p>
+        <% end %>
+    </div>
+</div>

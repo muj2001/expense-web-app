@@ -23,6 +23,9 @@
   </head>
 
   <body>
+    <% unless paths_without_header.include?(request.path) %>
+      <%= render "header" %>
+    <% end %>
     <main>
       <%= yield %>
     </main>

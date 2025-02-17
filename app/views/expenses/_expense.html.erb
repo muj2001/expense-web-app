@@ -1,0 +1,25 @@
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+    <td class="w-4 p-4">
+        <%= "Rs. " + expense.amount.to_s %>
+    </td>
+    <td class="px-6 py-4">
+        <%= expense.transaction_type.humanize %>
+    </td>
+    <td class="px-6 py-4">
+      <%= expense.category.present? ? expense.category.name : "TBD" %>
+    </td>
+    <td class="px-6 py-4">
+        <%= expense.description.length > 50 ? expense.description[0..50] + "..." : expense.description %>
+    </td>
+    <td class="px-6 py-4">
+        <% if expense.transaction_type == "received" %>
+            <span class="text-3xl text-green-300" >&#9650;</span>
+        <% else %>
+            <span class="text-3xl text-red-400" >&#9660;</span> 
+        <% end %>
+    </td>
+    <td class="px-6 py-4">
+      <%= link_to "Show this expense", user_expense_path(expense.user, expense), class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-200 font-medium" %>
+    </td>
+    
+</tr> 
