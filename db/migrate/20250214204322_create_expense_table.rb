@@ -8,6 +8,7 @@ class CreateExpenseTable < ActiveRecord::Migration[8.0]
       t.text :description
       t.date :date, null: false
       t.boolean :borrowed, default: false, null: false
+      t.boolean :salary, default: false, null: false
       t.timestamps
     end
   end
